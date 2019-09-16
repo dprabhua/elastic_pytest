@@ -65,8 +65,9 @@ class APIBase():
             res.raise_for_status()
             print("# Get Method Passed")
             return res
-        except requests.HTTPError as er:
+        except Exception as er:
             print(traceback.format_exc())
+            return res
 
     def http_delete(self, payload):
         try:
@@ -77,6 +78,7 @@ class APIBase():
             return res
         except requests.HTTPError as er:
             print(traceback.format_exc())
+            return res
 
     def getPayload(self, template_dir, template_file, params_dict, keys_to_remove=None):
 

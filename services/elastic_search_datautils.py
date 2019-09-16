@@ -8,6 +8,9 @@ import os
 
 
 class elasticDTO(object):
+    '''
+    Simplifies the Large Data in multiple format to single Data Transfer Object (DTO)
+    '''
     def __init__(self, **kwargs):
         self.index = kwargs['index']
         self.type = kwargs['type']
@@ -17,6 +20,12 @@ class elasticDTO(object):
         self.message = kwargs['message']      
         
 class elasticDataUtils(object):
+    
+    '''
+    It handles all the Data for testcase execution
+    Default values are assigned incase of missing data
+    3rd Party data can be integrated
+    '''
     
     def getDefault(self,dict_or_object):
         if type(dict_or_object) == type(dict()):
@@ -34,6 +43,9 @@ class elasticDataUtils(object):
         return elasticDTO(**default_dict)
     
 def getElasticPayload(params_dict):
+    '''
+    Method to create the payload from the Jinja Template using the DTO provided
+    '''
     current_dir=os.path.dirname(os.path.abspath(__file__))
     template_dir = current_dir
     template_file='elastic.j2'

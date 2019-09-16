@@ -18,12 +18,13 @@ class ElasticService(APIBase):
             self.payload=getElasticPayload(es_dto.__dict__)
             response = self.http_post(self.payload)
             print(response.json())
+            response.raise_for_status()
         except Exception as e:
             if msg:
-                if isinstance(msg, dict):
-                    assert self.getReturnStatus() == msg["errorCode"], "Response status code not matching with expected Error code"
-                else:
-                    assert response.json() == msg, "Response status code not matching with expected Error code"
+                assert response.status_code == msg["status"], "Response status code not matching with expected Error code"
+                assert response.json() == msg, "Response Error message not matching with expected message"
+                print("The Error message is matching the api returned Error message")
+                return
             raise RuntimeError("Unable to Create the Record due to : %s" %e)       
     
     def update_record(self, es_dto, msg=None):
@@ -32,12 +33,13 @@ class ElasticService(APIBase):
             self.payload=getElasticPayload(es_dto.__dict__)
             response = self.http_post(self.payload)
             print(response.json())
+            response.raise_for_status()
         except Exception as e:
             if msg:
-                if isinstance(msg, dict):
-                    assert self.getReturnStatus() == msg["errorCode"], "Response status code not matching with expected Error code"
-                else:
-                    assert response.json() == msg, "Response status code not matching with expected Error code"
+                assert response.status_code == msg["status"], "Response status code not matching with expected Error code"
+                assert response.json() == msg, "Response Error message not matching with expected message"
+                print("The Error message is matching the api returned Error message")
+                return
             raise RuntimeError("Unable to Update the Record due to : %s" %e)  
         
     def delete_record(self, es_dto, msg=None):
@@ -45,13 +47,14 @@ class ElasticService(APIBase):
         try:
             self.payload=getElasticPayload(es_dto.__dict__)
             response = self.http_delete(self.payload)
+            response.raise_for_status()
             print(response.json())
         except Exception as e:
             if msg:
-                if isinstance(msg, dict):
-                    assert self.getReturnStatus() == msg["errorCode"], "Response status code not matching with expected Error code"
-                else:
-                    assert response.json() == msg, "Response status code not matching with expected Error code"
+                assert response.status_code == msg["status"], "Response status code not matching with expected Error code"
+                assert response.json() == msg, "Response Error message not matching with expected message"
+                print("The Error message is matching the api returned Error message")
+                return
             raise RuntimeError("Unable to Delete the Record due to : %s" %e)  
         
         
@@ -60,13 +63,14 @@ class ElasticService(APIBase):
         try:
             self.payload=getElasticPayload(es_dto.__dict__)
             response = self.http_get(self.payload)
+            response.raise_for_status()
             print(response.json())
         except Exception as e:
             if msg:
-                if isinstance(msg, dict):
-                    assert self.getReturnStatus() == msg["errorCode"], "Response status code not matching with expected Error code"
-                else:
-                    assert response.json() == msg, "Response status code not matching with expected Error code"
+                assert response.status_code == msg["status"], "Response status code not matching with expected Error code"
+                assert response.json() == msg, "Response Error message not matching with expected message"
+                print("The Error message is matching the api returned Error message")
+                return
             raise RuntimeError("Unable to Get the Record due to : %s" %e)  
         
 if __name__ == '__main__':

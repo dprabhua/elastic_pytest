@@ -25,6 +25,6 @@
 </li>
 </ul>
 <h2 style="color: #2e6c80;">Architecture Diagram:</h2>
-<p><strong><img src="https://github.com/dprabhua/elastic_pytest/blob/master/Archi.png" alt="Architecture Diagram" width="500" height="380" />&nbsp;</strong></p>
+<p><strong><img src="https://github.com/dprabhua/elastic_pytest/blob/master/images/Archi.png" alt="Architecture Diagram" width="500" height="380" />&nbsp;</strong></p>
 <p>&nbsp;</p>
 <p><strong>&nbsp;</strong></p>
