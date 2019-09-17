@@ -50,17 +50,19 @@ class ElasticSearchRecords(unittest.TestCase):
         self.es_svc.get_record(es_dto)
         self.es_svc.delete_record(es_dto)
         
+    
+        
     @pytest.mark.regression
     def test003_ValidateIndexApi(self):
         '''
-        Basic Testcase to validate the Elastic Search Index API
+        Basic Testcase to validate the Elastic Search Index API Error Message
+        1. Invalid Index
+        2. Invalid Id
         
         '''
         es_dict={ 'index': 'datalogue', 'id': '1', 'user': 'prabhu', 'post_date': '2009-11-15T13:12:00', 'message': 'Trying out Elasticsearch, so far so good?'}
         es_dto=elasticDataUtils().getDefault(es_dict)
         self.es_svc.create_record(es_dto)
-#         es_dto.message = 'The message is updated in Testcases to verify the PUT method'
-#         self.es_svc.update_record(es_dto)
         es_dto.index="Wrong_index"     
         msg={
                 "error": {
@@ -85,6 +87,15 @@ class ElasticSearchRecords(unittest.TestCase):
             }
         self.es_svc.get_record(es_dto, msg)
         self.es_svc.delete_record(es_dto, msg)
+        es_dto.index="datalogue" 
+        es_dto.id="Invalid_Id"
+        msg={
+            "_id": "Invalid_Id",
+            "_index": "datalogue",
+            "_type": "_doc",
+            "found": False
+        }
+        self.es_svc.get_record(es_dto, msg)
 
 if __name__ == '__main__':
      

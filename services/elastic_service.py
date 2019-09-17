@@ -51,7 +51,7 @@ class ElasticService(APIBase):
             print(response.json())
         except Exception as e:
             if msg:
-                assert response.status_code == msg["status"], "Response status code not matching with expected Error code"
+                #assert response.status_code == msg["status"], "Response status code not matching with expected Error code"
                 assert response.json() == msg, "Response Error message not matching with expected message"
                 print("The Error message is matching the api returned Error message")
                 return
@@ -67,7 +67,7 @@ class ElasticService(APIBase):
             print(response.json())
         except Exception as e:
             if msg:
-                assert response.status_code == msg["status"], "Response status code not matching with expected Error code"
+                #assert response.status_code == msg["status"], "Response status code not matching with expected Error code"
                 assert response.json() == msg, "Response Error message not matching with expected message"
                 print("The Error message is matching the api returned Error message")
                 return
@@ -77,7 +77,6 @@ if __name__ == '__main__':
     es_svc = ElasticService()
     es_dict={ 'index': 'datalogue', 'id': '5', 'user': 'kimchy', 'post_date': '2009-11-15T13:12:00', 'message': 'Trying out Elasticsearch, so far so good?'}
     es_dto=elasticDataUtils().getDefault(es_dict)
-    print("I am Here %s" %es_dto)
     es_svc.create_record(es_dto)
     es_svc.get_record(es_dto)
     pass
