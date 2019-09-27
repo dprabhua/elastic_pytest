@@ -4,7 +4,7 @@
 <p>Elasticsearch is a distributed RESTful search engine built for the cloud.&nbsp;</p>
 <p><a href="https://github.com/elastic/elasticsearch">Opensource: https://github.com/elastic/elasticsearch</a></p>
 <blockquote>
-<pre class="programlisting prettyprint lang-sh prettyprinted"><span class="pln">docker run </span><span class="pun">-</span><span class="pln">p </span><span class="lit">9200</span><span class="pun">:</span><span class="lit">9200</span> <span class="pun">-</span><span class="pln">p </span><span class="lit">9300</span><span class="pun">:</span><span class="lit">9300</span> <span class="pun">-</span><span class="pln">e </span><span class="str">"discovery.type=single-node"</span><span class="pln"> doc</span></pre>
+<pre class="programlisting prettyprint lang-sh prettyprinted"><span class="pln">docker run </span><span class="pun">-</span><span class="pln">p </span><span class="lit">9200</span><span class="pun">:</span><span class="lit">9200</span> <span class="pun">-</span><span class="pln">p </span><span class="lit">9300</span><span class="pun">:</span><span class="lit">9300</span> <span class="pun">-</span><span class="pln">e </span><span class="str">"discovery.type=single-node"</span><span class="pln"> docker.elastic.co/elasticsearch/elasticsearch:7.3.2</span></pre>
 </blockquote>
 <h2 style="color: #2e6c80;">Test Framework Components:</h2>
 <ul>
